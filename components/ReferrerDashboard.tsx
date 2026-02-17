@@ -83,6 +83,7 @@ export function ReferrerDashboard() {
           <CardContent>
             <p className="font-heading text-3xl font-bold text-success">{rewardsEarned}</p>
             <p className="text-sm text-muted-foreground">Paid referrals (reward eligible)</p>
+            <p className="mt-2 text-xs text-muted-foreground">Self-referrals are not eligible for rewards.</p>
           </CardContent>
         </Card>
         <Card className="lg:col-span-2">

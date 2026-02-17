@@ -27,15 +27,15 @@ export function AdminLeadsTable() {
   return (
     <div className="space-y-4">
       <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-        <h2 className="font-heading text-xl font-semibold text-foreground">All leads</h2>
+        <h2 className="font-heading text-lg font-semibold text-foreground">All leads</h2>
         <Select
           options={[{ value: "all", label: "All statuses" }, ...LEAD_STATUSES.map((s) => ({ value: s, label: s }))]}
           value={statusFilter}
           onChange={(e) => setStatusFilter(e.target.value)}
-          className="w-full sm:w-48"
+          className="w-full sm:w-44"
         />
       </div>
-      <div className="overflow-hidden rounded-lg border border-card-border bg-card">
+      <div className="overflow-hidden rounded-lg border border-card-border bg-card/50">
         {filtered.length === 0 ? (
           <div className="py-12 text-center text-muted-foreground">No leads match the filter.</div>
         ) : (
@@ -48,6 +48,8 @@ export function AdminLeadsTable() {
                 <TableHead>Service</TableHead>
                 <TableHead>Referrer</TableHead>
                 <TableHead>Status</TableHead>
+                <TableHead className="text-muted-foreground">IP (demo)</TableHead>
+                <TableHead className="text-muted-foreground">Duplicate (demo)</TableHead>
                 <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
@@ -65,6 +67,8 @@ export function AdminLeadsTable() {
                       <span className="ml-1.5 text-xs text-success">Reward eligible</span>
                     )}
                   </TableCell>
+                  <TableCell className="text-xs text-muted-foreground">Logged</TableCell>
+                  <TableCell className="text-xs text-muted-foreground">OK</TableCell>
                   <TableCell className="text-right">
                     <StatusActions lead={lead} onStatusChange={handleStatusChange} />
                   </TableCell>
