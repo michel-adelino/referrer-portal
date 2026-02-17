@@ -23,14 +23,14 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         onClick={() => setMobileMenuOpen(false)}
       />
 
-      {/* Sidebar: fixed drawer on mobile, static column on desktop; full viewport height */}
+      {/* Sidebar: fixed so it does not scroll; drawer on mobile, always visible on desktop */}
       <aside
         className={`
-          z-50 flex w-64 shrink-0 flex-col border-r border-card-border bg-card
+          z-50 flex w-64 flex-col border-r border-card-border bg-card
           transition-transform duration-200 ease-out
-          fixed inset-y-0 left-0 h-screen min-h-screen
+          fixed inset-y-0 left-0 h-screen
           ${mobileMenuOpen ? "translate-x-0" : "-translate-x-full"}
-          lg:relative lg:left-auto lg:top-auto lg:min-h-screen lg:translate-x-0
+          lg:translate-x-0
         `}
       >
         <div className="flex h-14 shrink-0 items-center justify-between border-b border-card-border px-4">
@@ -94,8 +94,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         </div>
       </aside>
 
-      {/* Main content */}
-      <div className="flex min-w-0 flex-1 flex-col">
+      {/* Main content: margin-left on desktop so it sits next to fixed sidebar */}
+      <div className="flex min-w-0 flex-1 flex-col lg:ml-64">
         <header className="sticky top-0 z-30 flex h-14 shrink-0 items-center gap-3 border-b border-card-border bg-background/95 px-4 backdrop-blur sm:gap-4 sm:px-6">
           <button
             type="button"
